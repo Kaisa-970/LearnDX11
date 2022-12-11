@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>F:\WorkSpace\VSProject\LearnDx\x64\Debug\LearnDx.exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>F:\WorkSpace\VSProject\LearnDx\x64\Debug\shader_PS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>F:\WorkSpace\VSProject\LearnDx\x64\Debug\shader_VS.cso</FullPath>
+    </ContentFile>
+  </ContentFiles>
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>
