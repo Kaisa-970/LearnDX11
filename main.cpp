@@ -41,12 +41,9 @@ VOID Direct3D_CleanUp();
 
 
 IDXGISwapChain* g_pSwapChain;
-IDXGISwapChain1* g_pSwapChain1;
 ID3D11Device* g_pd3dDevice;
-ID3D11Device1* g_pd3dDevice1;
 D3D_FEATURE_LEVEL FeatureLevel;
 ID3D11DeviceContext* g_pImmediateContext;
-ID3D11DeviceContext1* g_pImmediateContext1;
 ID3D11RenderTargetView* g_pRengerTargetView = nullptr;
 ID3D11VertexShader* g_pVertexShader = nullptr;
 ID3D11InputLayout* g_pVSLayout = nullptr;
@@ -223,114 +220,6 @@ HRESULT Direct3D_Init(HWND hwnd) {
 
         return hr;
     }
-
-    
-
-    //*****Turial
-    //D3D_DRIVER_TYPE driverTypes[] =
-    //{
-    //    D3D_DRIVER_TYPE_HARDWARE,
-    //    D3D_DRIVER_TYPE_WARP,
-    //    D3D_DRIVER_TYPE_REFERENCE,
-    //};
-    //UINT numDriverTypes = ARRAYSIZE(driverTypes);
-
-    //UINT numFeatureLevels = ARRAYSIZE(featureLevels);
-
-    //for (UINT driverTypeIndex = 0; driverTypeIndex < numDriverTypes; driverTypeIndex++)
-    //{
-    //    g_driverType = driverTypes[driverTypeIndex];
-    //    hr = D3D11CreateDevice(nullptr, g_driverType, nullptr, createDeviceFlags, featureLevels, numFeatureLevels,
-    //        D3D11_SDK_VERSION, &g_pd3dDevice, &g_FeatureLevel, &g_pImmediateContext);
-
-    //    if (hr == E_INVALIDARG)
-    //    {
-    //        // DirectX 11.0 platforms will not recognize D3D_FEATURE_LEVEL_11_1 so we need to retry without it
-    //        hr = D3D11CreateDevice(nullptr, g_driverType, nullptr, createDeviceFlags, &featureLevels[1], numFeatureLevels - 1,
-    //            D3D11_SDK_VERSION, &g_pd3dDevice, &g_FeatureLevel, &g_pImmediateContext);
-    //    }
-
-    //    if (SUCCEEDED(hr))
-    //        break;
-    //}
-    //if (FAILED(hr))
-    //    return hr;
-
-    //IDXGIFactory1* dxgiFactory = nullptr;
-    //{
-    //    IDXGIDevice* dxgiDevice = nullptr;
-    //    hr = g_pd3dDevice->QueryInterface(__uuidof(IDXGIDevice), reinterpret_cast<void**>(&dxgiDevice));
-    //    if (SUCCEEDED(hr))
-    //    {
-    //        IDXGIAdapter* adapter = nullptr;
-    //        hr = dxgiDevice->GetAdapter(&adapter);
-    //        if (SUCCEEDED(hr))
-    //        {
-    //            hr = adapter->GetParent(__uuidof(IDXGIFactory1), reinterpret_cast<void**>(&dxgiFactory));
-    //            adapter->Release();
-    //        }
-    //        dxgiDevice->Release();
-    //    }
-    //}
-    //if (FAILED(hr))
-    //    return hr;
-
-    //// Create swap chain
-    //IDXGIFactory2* dxgiFactory2 = nullptr;
-    //hr = dxgiFactory->QueryInterface(__uuidof(IDXGIFactory2), reinterpret_cast<void**>(&dxgiFactory2));
-    //if (dxgiFactory2)
-    //{
-    //    // DirectX 11.1 or later
-    //    hr = g_pd3dDevice->QueryInterface(__uuidof(ID3D11Device1), reinterpret_cast<void**>(&g_pd3dDevice1));
-    //    if (SUCCEEDED(hr))
-    //    {
-    //        (void)g_pImmediateContext->QueryInterface(__uuidof(ID3D11DeviceContext1), reinterpret_cast<void**>(&g_pImmediateContext1));
-    //    }
-
-    //    DXGI_SWAP_CHAIN_DESC1 sd = {};
-    //    sd.Width = width;
-    //    sd.Height = height;
-    //    sd.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
-    //    sd.SampleDesc.Count = 1;
-    //    sd.SampleDesc.Quality = 0;
-    //    sd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-    //    sd.BufferCount = 1;
-
-    //    hr = dxgiFactory2->CreateSwapChainForHwnd(g_pd3dDevice, hwnd, &sd, nullptr, nullptr, &g_pSwapChain1);
-    //    if (SUCCEEDED(hr))
-    //    {
-    //        hr = g_pSwapChain1->QueryInterface(__uuidof(IDXGISwapChain), reinterpret_cast<void**>(&g_pSwapChain));
-    //    }
-
-    //    dxgiFactory2->Release();
-    //}
-    //else
-    //{
-    //    // DirectX 11.0 systems
-    //    DXGI_SWAP_CHAIN_DESC sd = {};
-    //    sd.BufferCount = 1;
-    //    sd.BufferDesc.Width = width;
-    //    sd.BufferDesc.Height = height;
-    //    sd.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
-    //    sd.BufferDesc.RefreshRate.Numerator = 60;
-    //    sd.BufferDesc.RefreshRate.Denominator = 1;
-    //    sd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-    //    sd.OutputWindow = hwnd;
-    //    sd.SampleDesc.Count = 1;
-    //    sd.SampleDesc.Quality = 0;
-    //    sd.Windowed = TRUE;
-
-    //    hr = dxgiFactory->CreateSwapChain(g_pd3dDevice, &sd, &g_pSwapChain);
-    //}
-
-    //// Note this tutorial doesn't handle full-screen swapchains so we block the ALT+ENTER shortcut
-    //dxgiFactory->MakeWindowAssociation(hwnd, DXGI_MWA_NO_ALT_ENTER);
-
-    //dxgiFactory->Release();
-    //*****
-
-
-
 
     ID3D11Texture2D* pBackBuffer = nullptr;
     hr = g_pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(&pBackBuffer));
