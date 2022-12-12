@@ -2,15 +2,15 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>F:\WorkSpace\VSProject\LearnDx\x64\Debug\LearnDx.exe</FullPath>
+      <FullPath>E:\YPKWorkSpace\Project\VSProject\LearnDX11\LearnDX11\x64\Debug\LearnDx.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>F:\WorkSpace\VSProject\LearnDx\x64\Debug\shader_PS.cso</FullPath>
+      <FullPath>E:\YPKWorkSpace\Project\VSProject\LearnDX11\LearnDX11\x64\Debug\shader_PS.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>F:\WorkSpace\VSProject\LearnDx\x64\Debug\shader_VS.cso</FullPath>
+      <FullPath>E:\YPKWorkSpace\Project\VSProject\LearnDX11\LearnDX11\x64\Debug\shader_VS.cso</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />

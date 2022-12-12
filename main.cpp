@@ -150,6 +150,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
     case WM_PAINT:
         hdc = BeginPaint(hWnd,&ps) ;
+        //Direct3D_Render(hWnd);
         EndPaint(hWnd, &ps);
         //ValidateRect(hWnd, NULL); //更新客户区显示
         break;
@@ -331,10 +332,19 @@ HRESULT Direct3D_Init(HWND hwnd) {
 
 
 
-    ID3D11Resource* pBackBuffer = nullptr;
-    g_pSwapChain->GetBuffer(0, __uuidof(ID3D11Resource), reinterpret_cast<void**>(&pBackBuffer));
-    g_pd3dDevice->CreateRenderTargetView(pBackBuffer, nullptr, &g_pRengerTargetView);
+    ID3D11Texture2D* pBackBuffer = nullptr;
+    hr = g_pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(&pBackBuffer));
+    if (FAILED(hr)) {
+        MessageBox(hwnd, L"GetBuffer failed!", 0, 0);
+    }
+    hr = g_pd3dDevice->CreateRenderTargetView(pBackBuffer, nullptr, &g_pRengerTargetView);
     pBackBuffer->Release();
+    if (FAILED(hr)) {
+        MessageBox(hwnd, L"CreateRT failed!", 0, 0);
+    }
+
+    // 将渲染目标视图绑定到渲染管线(重要！！！)
+    g_pImmediateContext->OMSetRenderTargets(1, &g_pRengerTargetView, NULL);
 
     D3D11_VIEWPORT vp;
     vp.Width = (FLOAT)width;
